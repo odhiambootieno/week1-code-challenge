@@ -48,4 +48,4 @@ This project is licensed under the MIT License - see the LICENSE.md file for det
 
 #Contact
 
-Brian Otieno - Gmail (brianmkcnight@gmai.com)
+Brian Otieno - Gmail (mail to:brianmkcnight@gmai.com)
