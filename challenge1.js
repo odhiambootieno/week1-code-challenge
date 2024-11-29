@@ -1,13 +1,13 @@
 function getStudentGrade() {
     // Prompt user for input
-    let marks = prompt("Enter the student's marks (0 to 100):");
+    let marks = prompt("Please enter the student's marks (0 to 100):");
 
     // Convert input to a number
     marks = Number(marks);
 
     // Check if the input is a valid number
     if (isNaN(marks) || marks < 0 || marks > 100) {
-        console.log("Invalid input. Enter a number between 0 and 100.");
+        console.log("Invalid input. Please enter a number between 0 and 100.");
         return;
     }
 
