@@ -11,8 +11,9 @@ function calculateNetSalary() {
 
     // Calculate Gross Salary
     let grossSalary = basicSalary + benefits;
+    console.log(`Gross Salary: Ksh ${grossSalary.toFixed(2)}`);
 
-    // Calculate KRA Tax (PAYE)
+    // Calculate (PAYE) KRA Tax 
     let tax;
     if (grossSalary <= 24000) {
         tax = 0;
@@ -25,22 +26,20 @@ function calculateNetSalary() {
     } else {
         tax = (grossSalary - 60000) * 0.30 + (20000 * 0.20) + (20000 * 0.15) + (8333 * 0.10); // Previous brackets
     }
+    console.log(`PAYE Tax: Ksh ${tax.toFixed(2)}`);
 
     // Calculate NHIF Deduction
     let nhifDeduction = (grossSalary > 15000) ? 500 : 0;
+    console.log(`NHIF Deduction: Ksh ${nhifDeduction}`);
 
     // Calculate NSSF Deduction
     let nssfDeduction = 200;
+    console.log(`NSSF Deduction: Ksh ${nssfDeduction}`);
 
     // Calculate Net Salary
     let netSalary = grossSalary - (tax + nhifDeduction + nssfDeduction);
-
-    // Output results
-    console.log(`Gross Salary: Ksh ${grossSalary.toFixed(2)}`);
-    console.log(`PAYE Tax: Ksh ${tax.toFixed(2)}`);
-    console.log(`NHIF Deduction: Ksh ${nhifDeduction}`);
-    console.log(`NSSF Deduction: Ksh ${nssfDeduction}`);
     console.log(`Net Salary: Ksh ${netSalary.toFixed(2)}`);
+
 }
 
 // Call the function
