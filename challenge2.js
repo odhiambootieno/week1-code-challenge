@@ -1,33 +1,39 @@
-function speedDetector() {
-    // Prompt user for input
-    let speed = prompt("Please enter the speed of the car (in km/h):");
+const readline = require('readline');
 
-    // Convert input to a number
-    speed = Number(speed);
+// Create an interface for input and output
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
 
-    // Check if the input is a valid number
-    if (isNaN(speed) || speed < 0) {
-        console.log("Invalid input. Please enter a valid speed.");
-        return;
-    }
-
+// Function to check speed and calculate demerit points
+function checkSpeed(speed) {
     const speedLimit = 70;
-    let demeritPoints = 0;
+    const demeritPointThreshold = 12;
 
-    // Check the speed against the limit
     if (speed < speedLimit) {
         console.log("Ok");
     } else {
-        // Calculate demerit points for every 5 km/h above the speed limit
-        demeritPoints = Math.floor((speed - speedLimit) / 5);
+        // Calculate demerit points
+        const excessSpeed = speed - speedLimit;
+        const demeritPoints = Math.floor(excessSpeed / 5);
+
         console.log(`Points: ${demeritPoints}`);
 
-        // Check if the license should be suspended
-        if (demeritPoints > 12) {
+        // Check if license should be suspended
+        if (demeritPoints > demeritPointThreshold) {
             console.log("License suspended");
         }
     }
 }
 
-// Call the function
-speedDetector();
+// Prompt the user for input
+rl.question("Please enter the speed of the car: ", (input) => {
+    const speed = Number(input); // Convert input to a number
+    if (isNaN(speed)) {
+        console.log("Invalid input. Please enter a valid number.");
+    } else {
+        checkSpeed(speed); // Call the speed checking function
+    }
+    rl.close(); // Close the readline interface
+});
